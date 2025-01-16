@@ -60,7 +60,14 @@ public class CharacterFrequencyCounter {
      */
     public double getRelativePercentage(char c) {
         c = Character.toLowerCase(c);
-        int charCount = frequencyMap.get(c);
+
+        // Add this to fix bug in the test:
+        int charCount = 0;
+        if (frequencyMap.get(c) != null)
+        {
+            charCount = frequencyMap.get(c);
+        }
+        //
 
         return ((double) charCount / totalCharacterCount) * 100;
     }
